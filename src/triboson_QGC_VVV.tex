@@ -1,0 +1,23 @@
+\include{preamble}
+
+\begin{document}
+\begin{tikzpicture}
+  \begin{feynman}
+    \vertex (i1) at (0,3) {\(\PQq\)};
+    \vertex (i2) at (0,0) {\(\PAQq\)};
+    \vertex (a)  at (1.25,1.5);
+    \vertex [right=1.25 of a] (b);
+    \vertex (f1) at (4,3) {\(V_{1}\)};
+    \vertex [below=1.5 of f1] (f2) {\(V_{2}\)};
+    \vertex [below=1.5 of f2] (f3) {\(V_{3}\)};
+
+    \diagram* {
+      (i1) -- [fermion] (a) -- [fermion] (i2),
+      (a) -- [boson, edge label=\(V^{*}\)] (b),
+      (b) -- [boson] (f1),
+      (b) -- [boson] (f2),
+      (b) -- [boson] (f3),
+    };
+  \end{feynman}
+\end{tikzpicture}
+\end{document}
