@@ -1,0 +1,34 @@
+\include{preamble}
+
+\begin{document}
+\begin{tikzpicture}
+  \begin{feynman}
+    \vertex (i1) at (0,3.5) {\(\PQq\)};
+    \vertex (i2) at (0,0.5) {\(\PAQq\)};
+
+    \vertex (a) at (0.75,2);
+    \vertex [right=1 of a] (b);
+    %% \vertex (c) at (2.75,2.5);
+    \node [small, blob] (c) at (2.75,2.5);
+    \vertex (d) at (3.5,3.25);
+    \vertex [below=2.5 of d](e);
+
+    \vertex (f1) at (4.5,4) {\(\PAl\)};
+    \vertex (f2) at (4.5,3) {\(\Pl\)};
+    \vertex (f3) at (4.5,1) {\(\PAl\)};
+    \vertex (f4) at (4.5,0) {\(\Pl\)};
+    \vertex (f5) at (4.5,2) {\(\PGg\)};
+
+    \diagram* {
+      (i1) -- [fermion] (a) -- [fermion] (i2),
+      (a) -- [boson, edge label=\(\PZ^{*}\)] (b),
+      (b) -- [scalar, edge label=\(\PH\)] (c),
+      (c) -- [boson, edge label=\(\PZ\)] (d),
+      (b) -- [boson, edge label=\(\PZ\)] (e),
+      (f1) -- [fermion] (d) -- [fermion] (f2),
+      (f3) -- [fermion] (e) -- [fermion] (f4),
+      (c) -- [boson] (f5),
+    };
+  \end{feynman}
+\end{tikzpicture}
+\end{document}
