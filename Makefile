@@ -2,7 +2,7 @@ SRCDIR=src
 OBJDIR=output
 PDF=pdflatex
 PDFOPT=-interaction=batchmode # -aux-directory=. # pdflatex does not support it
-SOURCES=$(shell find $(SRCDIR) -maxdepth 1 -type f -name "*.tex" -a -not -name preamble.tex)
+SOURCES=$(shell find $(SRCDIR) -maxdepth 1 -type f -name "*.tex")
 OBJECTS=$(patsubst $(SRCDIR)/%.tex,$(OBJDIR)/%.pdf,$(SOURCES))
 PNGFIGS=$(patsubst %.pdf,%.png,$(OBJECTS))
 
@@ -15,9 +15,9 @@ Makefile: ;
 
 .PHONY: debug
 debug:
-	@echo "SOURCES: " $(SOURCES)
-	@echo "OBJECTS: " $(OBJECTS)
-	@echo "PNGFIGS: " $(PNGFIGS)
+	@echo "SOURCES:" ; printf "  %s\n" $(SOURCES)
+	@echo "OBJECTS:" ; printf "  %s\n" $(OBJECTS)
+	@echo "PNGFIGS:" ; printf "  %s\n" $(PNGFIGS)
 
 $(OBJDIR):
 	mkdir -p $(OBJDIR)
@@ -34,4 +34,4 @@ pngs: $(PNGFIGS) ;
 
 .PHONY: clean
 clean:
-	-rm $(OBJDIR)/*.aux $(OBJDIR)/*.log $(OBJECTS)
+	-rm $(OBJDIR)/*.aux $(OBJDIR)/*.log $(OBJDIR)/*.png $(OBJECTS)
