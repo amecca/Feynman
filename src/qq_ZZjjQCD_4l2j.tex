@@ -1,0 +1,35 @@
+\include{preamble}
+
+\begin{document}
+\begin{tikzpicture}
+  \begin{feynman}
+    \vertex (i2) at (0,1) {\(\PQq\)};
+    \vertex [above=3 of i2] (i1) {\(\PQq\)};
+
+    \vertex [right=1.25 of i1] (a);
+    \vertex [right=1.25 of i2] (b);
+
+    \vertex (c) at (2.5,3.5);
+    \vertex [below=2 of c] (d);
+    \vertex [right=1.25 of c] (z1); %at (3.75,3.5);
+    \vertex [right=1.25 of d] (z2);
+
+    \vertex (f1) at (5,5)        {\(\Pg\)};
+    \vertex [below=1 of f1] (f2) {\(\Pl\)};
+    \vertex [below=1 of f2] (f3) {\(\PAl\)};
+    \vertex [below=1 of f3] (f4) {\(\Pl\)};
+    \vertex [below=1 of f4] (f5) {\(\PAl\)};
+    \vertex [below=1 of f5] (f6) {\(\Pg\)};
+
+    \diagram* {
+      (i1) -- [fermion] (a) -- [fermion] (c) -- [fermion] (d) -- [fermion] (b) -- [fermion] (i2),
+      (a) -- [gluon] (f1),
+      (b) -- [gluon] (f6),
+      (c) -- [boson, edge label=\(\PZ\)] (z1),
+      (d) -- [boson, edge label=\(\PZ\)] (z2),
+      (f2) -- [fermion] (z1) -- [fermion] (f3),
+      (f4) -- [fermion] (z2) -- [fermion] (f5),
+    };
+  \end{feynman}
+\end{tikzpicture}
+\end{document}
