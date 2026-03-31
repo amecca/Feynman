@@ -1,0 +1,31 @@
+\include{preamble}
+
+\begin{document}
+\begin{tikzpicture}
+  \begin{feynman}
+    \vertex (i2) at (0,0) {\(\PQq\)};
+    \vertex [above=2.75 of i2] (i1) {\(\Pg\)};
+
+    \vertex [right=1.1 of i1] (a);
+    \vertex [right=2 of i2]   (b);
+    \vertex [above=2 of b]    (c);
+    \vertex [right=1 of b]    (d);
+    \vertex [right=1 of c]    (e);
+
+    \vertex (f1) at (4.5,3.5)    {\(\PQq\)};
+    \vertex [below=1 of f1] (f2) {\(\PAl\)};
+    \vertex [below=1 of f2] (f3) {\(\Pl\)};
+    \vertex [below=1 of f3] (f4) {\(\PAl\)};
+    \vertex [below=1 of f4] (f5) {\(\Pl\)};
+
+    \diagram* {
+      (i1) -- [gluon] (a),
+      (c) -- [boson, edge label=\(\PZ\)] (e),
+      (b) -- [boson, edge label=\(\PZ\)] (d),
+      (i2) -- [fermion] (b) -- [fermion] (c) -- [fermion] (a) -- [fermion] (f1),
+      (f2) -- [fermion] (e) -- [fermion] (f3),
+      (f4) -- [fermion] (d) -- [fermion] (f5),
+    };
+  \end{feynman}
+\end{tikzpicture}
+\end{document}
